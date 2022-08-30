@@ -1,3 +1,16 @@
-<p>
-  service-pipes works!
-</p>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th>Id</th>
+    <th>Firt Name</th>
+    <th>Last Name</th>
+    <th>Registration Date</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let customer of customers">
+    <td>{{ customer.id }}</td>
+    <td>{{ customer.firstName }}</td>
+    <td>{{ customer.lastName }}</td>
+    <td>{{ customer.createdOn | date : 'MM/dd/yyyy' }}</td>
+  </tr>
+</table>
