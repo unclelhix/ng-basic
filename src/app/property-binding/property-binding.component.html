@@ -1,0 +1,29 @@
+<div class="card" [ngStyle]="{'width': '25rem'}">
+  <div class="card-body">
+    <!--
+      Add CommonModule to use ngClass
+    -->
+    <h5 class="card-title"
+      [ngStyle]="sampleStyle"
+      [style.color]="color"
+      [innerHTML]="title">
+    </h5>
+    <div class="container">
+      <div [ngClass]="['input-group' ,'input-group-lg']">
+        <input
+          [type]="'text'"
+          [ngClass]="'form-control'"
+          [placeholder]="placeHolder"
+         />
+      </div>
+      <br>
+      <div [ngClass]="['input-group' ,'input-group-lg']">
+        <input
+          [type]="'text'"
+          [ngClass]="'form-control'"
+          [value]="inputValue"
+          />
+      </div>
+    </div>
+  </div>
+</div>

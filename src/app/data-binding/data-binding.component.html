@@ -1,0 +1,17 @@
+<div class="card" style="width: 25rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <div class="container">
+      <!--
+      To use ngModel import FormsModule
+       -->
+      <input  type="text" class="form-control" [ngModel]="oneway"/>
+       {{oneway}}
+        <!--
+        [()] AKA Banana in a box
+        -->
+       <input  type="text" class="form-control" [(ngModel)]="twoway"/>
+       {{twoway}}
+    </div>
+  </div>
+</div>

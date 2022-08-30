@@ -1,0 +1,42 @@
+<div class="card" style="width: 30rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{title}} - Ng If</h5>
+    <div class="container">
+
+      <button (click)="toggle()" [ngClass]="'btn btn-warning'">
+        {{buttonName}}
+      </button>
+
+      <ng-container *ngIf="show">
+          <div>
+            <label>Name:</label>
+            <div><input name="yourname"
+              [type]="'text'"
+              [ngClass]="'form-control'" />
+            </div>
+          </div>
+          <div>
+            <label>Email Address:</label>
+            <div>
+              <input name="email"
+              [type]="'text'"
+              [ngClass]="'form-control'" />
+            </div>
+          </div>
+          <div>
+            <label>Body:</label>
+            <div>
+              <textarea
+              rows="5"
+              cols="46"
+              [ngClass]="'form-control'">
+              </textarea>
+            </div>
+          </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>
+
+<br>

@@ -1,0 +1,20 @@
+<div class="card" style="width: 30rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{title}} - Ng For</h5>
+    <div class="container">
+
+        <div class="alert" *ngFor="let fruit of fruits"
+          [ngClass]="
+          {
+            'btn-danger': fruit === 'Apple',
+            'btn-success': fruit === 'Banana',
+            'btn-warning': fruit === 'Orange'
+          }"
+          role="alert">
+
+          {{fruit}}
+
+        </div>
+    </div>
+  </div>
+</div>

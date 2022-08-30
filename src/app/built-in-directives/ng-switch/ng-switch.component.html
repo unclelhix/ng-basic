@@ -1,0 +1,36 @@
+<div class="card" style="width: 30rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{title}} - Ng Switch</h5>
+    <div class="container">
+
+        <div>
+          <label>Input any number from 1-10:</label>
+          <div [ngSwitch]="inputNumber">
+            <div *ngSwitchCase="'1'">One</div>
+            <div *ngSwitchCase="'2'">Two</div>
+            <div *ngSwitchCase="'3'">Three</div>
+            <div *ngSwitchCase="'4'">Four</div>
+            <div *ngSwitchCase="'5'">Five</div>
+            <div *ngSwitchCase="'6'">Six</div>
+            <div *ngSwitchCase="'7'">Seven</div>
+            <div *ngSwitchCase="'8'">Eight</div>
+            <div *ngSwitchCase="'9'">Nine</div>
+            <div *ngSwitchCase="'10'">Ten</div>
+            <div *ngSwitchDefault>Default: None</div>
+          </div>
+
+          <div><input
+            [(ngModel)]="inputNumber"
+            [type]="'text'"
+            [ngClass]="'form-control'"
+            (ngModelChange)="onValueChange($event)" />
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+</div>
+
+<br>
