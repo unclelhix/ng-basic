@@ -18,9 +18,10 @@ import { NgForComponent } from './built-in-directives/ng-for/ng-for.component';
 import { NgIfComponent } from './built-in-directives/ng-if/ng-if.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgModelComponent } from './ng-model/ng-model.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
       NotFoundComponent,
       MainNavbarComponent,
@@ -31,7 +32,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
       PropertyBindingComponent,
       NgSwitchComponent,
       NgForComponent,
-      NgIfComponent
+      NgIfComponent,
+      NgModelComponent
    ],
   imports: [
     BrowserModule,

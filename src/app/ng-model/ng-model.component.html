@@ -1,0 +1,44 @@
+
+<div class="card" style="width: 25rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <div class="container">
+      <!-- #variable aka template variable -->
+      <form #it="ngForm" novalidate>
+        <!-- name is mandatory to add to get the value of ngmodel -->
+        <input class="form-control" name="first" ngModel required #first="ngModel">
+        <div class="spacer"></div>
+        <input class="form-control" name="last" ngModel required #last="ngModel">
+        <div class="spacer"></div>
+        <button class="btn btn-success" (click)="onSubmit(it)">Submit</button>
+      </form>
+      <div class="spacer"></div>
+      <p>First name value: {{ first.value }}</p>
+      <p>First name valid: {{ first.valid }}</p>
+      <p>last name value: {{ last.value }}</p>
+      <p>last name valid: {{ last.valid }}</p>
+      <p>Form value: {{ it.value | json }}</p>
+      <p>Form valid: {{ it.valid }}</p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="card" style="width: 25rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{title}} Using Class</h5>
+    <div class="container">
+      <!-- #variable aka template variable -->
+      <form #customerForm="ngForm" novalidate>
+        <!-- name is mandatory to add to get the value of ngmodel -->
+        <input class="form-control" name="fname" [(ngModel)]="customer.firstName" required>
+        <div class="spacer"></div>
+        <input class="form-control" name="lname" [(ngModel)]="customer.lastName" required>
+        <div class="spacer"></div>
+        <button class="btn btn-success" (click)="onSave(customerForm)">Submit</button>
+      </form>
+      <p>First name value: {{ customer.firstName }}</p>
+      <p>Last name value: {{ customer.lastName }}</p>
+      <p>Form valid: {{ customerForm.valid }}</p>
+    </div>
+  </div>
+</div>
