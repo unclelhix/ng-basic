@@ -17,7 +17,7 @@ import { NgSwitchComponent } from './built-in-directives/ng-switch/ng-switch.com
 import { NgForComponent } from './built-in-directives/ng-for/ng-for.component';
 import { NgIfComponent } from './built-in-directives/ng-if/ng-if.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule, //Add this for ngModel etc
     CommonModule, //Add this for ngClass etc
     BrowserAnimationsModule,
+    NgxPaginationModule,
     HttpClientModule
   ],
   providers: [], //Add this to become accessible
