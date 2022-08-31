@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class ServicePipesComponent implements OnInit {
   currentPage:number  = 1;
   pageItems:number = 0;
-  maxItemsPerPage:number  = 10;
+  itemsPerPage:number  = 10;
   skipItems = 10;
   customers = new Array<Customer>();
 
@@ -41,7 +41,7 @@ export class ServicePipesComponent implements OnInit {
     // });
   }
    getCustomers(){
-    this.customerService.getCustomersPaging(this.currentPage,this.skipItems,this.maxItemsPerPage)
+    this.customerService.getCustomersPaging(this.currentPage,this.skipItems,this.itemsPerPage)
     .pipe(
       map(res => res) // or any other operator
     ).subscribe(res => {
@@ -57,7 +57,7 @@ export class ServicePipesComponent implements OnInit {
   }
 
   onTableSizeChange(event:any): void {
-    this.maxItemsPerPage = event.target.value;
+    this.itemsPerPage = event.target.value;
     this.currentPage = 1;
     this.getCustomers();
   }
