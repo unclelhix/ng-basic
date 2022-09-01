@@ -2,6 +2,9 @@
 .spacer{
   width: 19rem; margin-top: 10px;
 }
+.control-label{
+padding-right:10px;
+}
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 

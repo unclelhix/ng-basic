@@ -10,6 +10,7 @@ export class BuiltInDirectivesComponent implements OnInit {
   title:string =  "Built-in structural directives";
 
   childInputValue: number = 0;
+
   childEventHanlder(value: any) {
     this.childInputValue = value;
   }

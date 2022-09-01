@@ -9,11 +9,17 @@ import { map } from 'rxjs/operators';
 })
 export class ServicePipesComponent implements OnInit {
   currentPage:number  = 1;
-  pageItems:number = 0;
+  totalItems:number = 0;
   itemsPerPage:number  = 10;
   skipItems = 10;
   customers = new Array<Customer>();
+  tableSize = [10, 20, 30, 50];
 
+  pagingConfig: any = {
+    itemsPerPage: this.itemsPerPage,
+    currentPage: this.currentPage,
+    totalItems: this.totalItems
+  }
   constructor(private customerService: CustomerService) {
 
     // this.customerService.getAllCustomers().subscribe(res=>console.log(res));
@@ -46,7 +52,7 @@ export class ServicePipesComponent implements OnInit {
       map(res => res) // or any other operator
     ).subscribe(res => {
       this.customers = res.data;
-      this.pageItems = Number(res.maxItems);
+      this.pagingConfig.totalItems = Number(res.maxItems);
     });
    }
 

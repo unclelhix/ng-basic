@@ -1,38 +1,54 @@
-<table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th>Id</th>
-    <th>Firt Name</th>
-    <th>Last Name</th>
-    <th>Birth Date</th>
-    <th>Mobile Number</th>
-    <th>Email</th>
-    <th>Registration Date</th>
-  </tr>
-  </thead>
-  <tr *ngFor="let customer of customers | paginate : {
-    itemsPerPage: itemsPerPage,
-    currentPage: currentPage,
-    totalItems: pageItems
-  }; let i = index">
+<div class="card">
+  <div class="card-body">
 
-  <!-- <tr *ngFor="let customer of customers"> -->
-    <td>{{ customer.id }}</td>
-    <td>{{ customer.firstName }}</td>
-    <td>{{ customer.lastName }}</td>
-    <td>{{ customer.birthday | date : 'MMMM dd,yyyy' }}</td>
-    <td>{{ customer.mobileNumber }}</td>
-    <td>{{ customer.email }}</td>
-    <td>{{ customer.createdOn | date : 'MM/dd/yyyy' }}</td>
-  </tr>
+    <div class="d-flex justify-content-between">
+      <div>
+        <h5 class="card-title">NGX Pagination</h5>
+      </div>
+      <div>
+        <div class="form-group form-inline">
+          <label class="control-label" for="noOfRows">No. of Rows</label>
+          <select name="noOfRows" (change)="onTableSizeChange($event)" class="form-control form-control-sm">
+            <option *ngFor="let size of tableSize" [ngValue]="size">
+              {{ size }}
+            </option>
+          </select>
+      </div>
 
-</table>
-<div class="d-flex justify-content-center">
-  <pagination-controls
+      </div>
+    </div>
+    <!-- #variable aka template variable -->
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Firt Name</th>
+          <th>Last Name</th>
+          <th>Birth Date</th>
+          <th>Mobile Number</th>
+          <th>Email</th>
+          <th>Registration Date</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let customer of customers | paginate : pagingConfig; let i = index">
 
-    previousLabel="Prev"
-    nextLabel="Next"
-    (pageChange)="onTableDataChange($event)">
-  </pagination-controls>
+        <!-- <tr *ngFor="let customer of customers"> -->
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.firstName }}</td>
+        <td>{{ customer.lastName }}</td>
+        <td>{{ customer.birthday | date : 'MMMM dd,yyyy' }}</td>
+        <td>{{ customer.mobileNumber }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.createdOn | date : 'MM/dd/yyyy' }}</td>
+      </tr>
+
+    </table>
+    <div class="d-flex justify-content-center">
+      <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+    </div>
+    <!-- responsive=true -->
+
+
+  </div>
 </div>
-<!-- responsive=true -->
