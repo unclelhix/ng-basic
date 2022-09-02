@@ -19,9 +19,10 @@ import { NgIfComponent } from './built-in-directives/ng-if/ng-if.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModelComponent } from './ng-model/ng-model.component';
+import { FormsValidationComponent } from './forms-validation/forms-validation.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
       NotFoundComponent,
       MainNavbarComponent,
@@ -33,7 +34,8 @@ import { NgModelComponent } from './ng-model/ng-model.component';
       NgSwitchComponent,
       NgForComponent,
       NgIfComponent,
-      NgModelComponent
+      NgModelComponent,
+      FormsValidationComponent
    ],
   imports: [
     BrowserModule,

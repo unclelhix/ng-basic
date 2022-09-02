@@ -31,6 +31,7 @@
       <form #customerForm="ngForm" novalidate>
         <!-- name is mandatory to add to get the value of ngmodel -->
         <input class="form-control" name="fname" [(ngModel)]="customer.firstName" required>
+
         <div class="spacer"></div>
         <input class="form-control" name="lname" [(ngModel)]="customer.lastName" required>
         <div class="spacer"></div>

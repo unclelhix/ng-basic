@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { Customer } from '../models/customer.model';
 
 @Component({
-  selector: 'app-ng-model',
-  templateUrl: './ng-model.component.html',
-  styleUrls: ['./ng-model.component.scss']
+  selector: 'app-forms-validation',
+  templateUrl: './forms-validation.component.html',
+  styleUrls: ['./forms-validation.component.scss']
 })
-export class NgModelComponent implements OnInit {
+export class FormsValidationComponent implements OnInit {
   title:string = "ngModel Sample"
   customer: Customer = {} as Customer; //"Definite Assignment Assertion" (!) to tell TypeScript that we know this value
 
@@ -15,14 +15,13 @@ export class NgModelComponent implements OnInit {
 
   ngOnInit() {
   }
-  onSubmit(it: NgForm) {
 
-    console.log(it.value);  // { first: '', last: '' }
-    console.log(it.valid);  // false
-  }
   onSave(customerForm: NgForm){
     console.log(customerForm.valid);
-    console.log(this.customer);
+    if(customerForm.valid){
+      //save
+      console.log(this.customer);
+    }
   }
 
 }

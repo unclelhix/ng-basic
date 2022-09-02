@@ -9,8 +9,9 @@ export class PropertyBindingComponent implements OnInit {
 
   title: string = "Property Binding";
   color: string = '#eb4034';
-  placeHolder:string = "Place holder only!";
+  placeHolder:string = "username ";
   inputValue:string = "Sample Value";
+
   sampleStyle:any = {
     'display': 'block',
     'cursor': 'pointer'
