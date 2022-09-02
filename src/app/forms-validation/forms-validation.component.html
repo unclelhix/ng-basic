@@ -1,13 +1,13 @@
 <div class="card" style="width: 25rem;">
   <div class="card-body">
-    <h5 class="card-title">{{title}} Using Class</h5>
+    <h5 class="card-title">{{title}} Validation</h5>
     <div class="container">
       <!-- #variable aka template variable -->
       <form #customerForm="ngForm" novalidate>
         <!-- name is mandatory to add to get the value of ngmodel -->
         <div class="row mb-3">
 
-          <input class="form-control" name="fname" [(ngModel)]="customer.firstName" #firstName="ngModel" required
+          <input class="form-control" name="fname" [(ngModel)]="customer.firstName" #firstName="ngModel" required pattern="^[a-zA-Z0-9]+$"
             minlength="3">
 
           <div class="spacer"></div>
@@ -19,13 +19,18 @@
             <div *ngIf="firstName.errors?.['minlength']">
               First Name must be at least 4 characters long.
             </div>
+            <div *ngIf="firstName.errors?.['pattern']">
+              Speacial Character is not allowed!
+            </div>
           </div>
 
         </div>
+
         <div class="spacer"></div>
+
         <div class="row mb-3">
 
-          <input class="form-control" name="lname" [(ngModel)]="customer.lastName" #lastName="ngModel" required
+          <input class="form-control" name="lname" [(ngModel)]="customer.lastName" #lastName="ngModel" required pattern="^[a-zA-Z0-9]+$"
             minlength="3">
 
           <div class="spacer"></div>
@@ -36,10 +41,13 @@
             <div *ngIf="lastName.errors?.['minlength']">
               Last Name must be at least 4 characters long.
             </div>
+            <div *ngIf="firstName.errors?.['pattern']">
+              Speacial Character is not allowed!
+            </div>
           </div>
-
         </div>
         <button class="btn btn-success" (click)="onSave(customerForm)">Submit</button>
+
       </form>
 
     </div>
