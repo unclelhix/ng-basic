@@ -7,7 +7,7 @@
         <!-- name is mandatory to add to get the value of ngmodel -->
         <div class="row mb-3">
 
-          <input class="form-control" name="fname" [(ngModel)]="customer.firstName" #firstName="ngModel" required pattern="^[a-zA-Z0-9]+$"
+          <input class="form-control" name="fname" [(ngModel)]="customer.firstName" #firstName="ngModel" required pattern="^[a-zA-Z]+$"
             minlength="3">
 
           <div class="spacer"></div>
@@ -20,7 +20,7 @@
               First Name must be at least 4 characters long.
             </div>
             <div *ngIf="firstName.errors?.['pattern']">
-              Speacial Character is not allowed!
+              Speacial Character or Numeric is not allowed!
             </div>
           </div>
 
@@ -30,7 +30,7 @@
 
         <div class="row mb-3">
 
-          <input class="form-control" name="lname" [(ngModel)]="customer.lastName" #lastName="ngModel" required pattern="^[a-zA-Z0-9]+$"
+          <input class="form-control" name="lname" [(ngModel)]="customer.lastName" #lastName="ngModel" required pattern="^[a-zA-Z]+$"
             minlength="3">
 
           <div class="spacer"></div>
@@ -42,7 +42,7 @@
               Last Name must be at least 4 characters long.
             </div>
             <div *ngIf="lastName.errors?.['pattern']">
-              Speacial Character is not allowed!
+              Speacial Character or Numeric is not allowed!
             </div>
           </div>
         </div>
