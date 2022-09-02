@@ -11,6 +11,7 @@ export class NgIfComponent implements OnInit {
   buttonName: string = "Show!"
   count: number = 0;
   show:boolean = false;
+  textInput: string = '';
 
   constructor() { }
 

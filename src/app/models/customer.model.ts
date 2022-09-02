@@ -7,7 +7,14 @@ export class Customer{
   public email: string;
   public createdOn : Date;
 
-  public constructor(id:number, firstName:string, lastName:string,birthday: Date, mobileNumber:string,email: string, createdOn: Date ) {
+  public constructor(id:number,
+    firstName:string,
+    lastName:string,
+    birthday: Date,
+    mobileNumber:string,
+    email: string,
+    createdOn: Date ) {
+
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -15,5 +22,6 @@ export class Customer{
     this.mobileNumber = mobileNumber;
     this.email = email;
     this.createdOn = createdOn;
+
   }
 }

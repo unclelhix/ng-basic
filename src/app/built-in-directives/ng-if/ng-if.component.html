@@ -40,3 +40,27 @@
 </div>
 
 <br>
+
+<div class="card" style="width: 30rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{title}} - Ng If</h5>
+    <div class="container">
+
+      <div>
+        <label>Name:</label>
+        <div><input name="textInput" [(ngModel)]="textInput"
+          [type]="'text'"
+          [ngClass]="'form-control'" />
+        </div>
+      </div>
+      <div *ngIf="textInput.length > 0">
+        {{textInput}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+
+
