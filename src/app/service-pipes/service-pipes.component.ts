@@ -21,13 +21,14 @@ export class ServicePipesComponent implements OnInit {
     // this.customerService.getAllCustomers().subscribe(res=>console.log(res));
     // this.customerService.getCustomersPaging(1,10,10).subscribe(res=>console.log(res));
 
-    this.getCustomers();
-
     this.pagingConfig = {
       itemsPerPage: this.itemsPerPage,
       currentPage: this.currentPage,
       totalItems:  this.totalItems
     }
+
+    this.getCustomers();
+
 
    }
    ngOnInit() {
@@ -48,24 +49,31 @@ export class ServicePipesComponent implements OnInit {
 
     // });
   }
+
    getCustomers(){
-    this.customerService.getCustomersPaging(this.currentPage,this.skipItems,this.itemsPerPage)
+    this.customerService.getCustomersPaging(
+      this.pagingConfig.currentPage,
+      this.pagingConfig.skipItems,
+      this.pagingConfig.itemsPerPage)
     .pipe(
       map(res => res) // or any other operator
     ).subscribe(res => {
       this.customers = res.data;
-      this.totalItems = Number(res.data.length)
+      this.pagingConfig.totalItems = Number(res.maxItems);
     });
    }
 
 
   onTableDataChange(event:any){
-    this.pagingConfig.currentPage  = event;
+    this.pagingConfig.currentPage = event;
+    this.getCustomers();
   }
 
   onTableSizeChange(event:any): void {
-    this.itemsPerPage = event.target.value;
+
+    this.pagingConfig.itemsPerPage = event.target.value;
     this.pagingConfig.currentPage = 1;
+
     this.getCustomers();
   }
 }

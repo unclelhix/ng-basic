@@ -7,8 +7,13 @@
         <!-- name is mandatory to add to get the value of ngmodel -->
         <div class="row mb-3">
 
-          <input class="form-control" name="fname" [(ngModel)]="customer.firstName" #firstName="ngModel" required pattern="^[a-zA-Z]+$"
-            minlength="3">
+          <input class="form-control"
+          name="fname"
+          [(ngModel)]="customer.firstName"
+          #firstName="ngModel"
+          required
+          pattern="^[a-zA-Z]+$"
+          minlength="3">
 
           <div class="spacer"></div>
 
