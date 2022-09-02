@@ -14,18 +14,20 @@ export class ServicePipesComponent implements OnInit {
   skipItems = 10;
   customers = new Array<Customer>();
   tableSize = [10, 20, 30, 50];
+  pagingConfig: any;
 
-  pagingConfig: any = {
-    itemsPerPage: this.itemsPerPage,
-    currentPage: this.currentPage,
-    totalItems: this.totalItems
-  }
   constructor(private customerService: CustomerService) {
 
     // this.customerService.getAllCustomers().subscribe(res=>console.log(res));
     // this.customerService.getCustomersPaging(1,10,10).subscribe(res=>console.log(res));
 
     this.getCustomers();
+
+    this.pagingConfig = {
+      itemsPerPage: this.itemsPerPage,
+      currentPage: this.currentPage,
+      totalItems:  this.totalItems
+    }
 
    }
    ngOnInit() {
@@ -52,19 +54,18 @@ export class ServicePipesComponent implements OnInit {
       map(res => res) // or any other operator
     ).subscribe(res => {
       this.customers = res.data;
-      this.pagingConfig.totalItems = Number(res.maxItems);
+      this.totalItems = Number(res.data.length)
     });
    }
 
 
   onTableDataChange(event:any){
-    this.currentPage  = event;
-    this.getCustomers();
+    this.pagingConfig.currentPage  = event;
   }
 
   onTableSizeChange(event:any): void {
     this.itemsPerPage = event.target.value;
-    this.currentPage = 1;
+    this.pagingConfig.currentPage = 1;
     this.getCustomers();
   }
 }
