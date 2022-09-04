@@ -60,7 +60,7 @@ export class ServicePipesComponent implements OnInit {
       map(res => res) // or any other operator
     ).subscribe(res => {
       this.customers = res.data;
-      this.pagingConfig.totalItems = Number(res.maxItems);
+      this.pagingConfig.totalItems = Number(res.totalItems);
     });
    }
 

@@ -29,8 +29,7 @@ constructor(private httpClient: HttpClient) { }
 
     let params = {
       'currentPage': currentPage,
-      'skipItems': skipItems,
-      'maxItemsPerPage': maxItemsPerPage
+      'ItemsPerPage': maxItemsPerPage
     }
     return this.httpClient.get<ResponseBody<any>>(this.baseURL + 'Customers/GetCustomersPaging', {params: params});
   }

@@ -2,7 +2,7 @@ export interface ResponseBody<T> {
   data: T;
   errorMessages: string[];
   isSuccess: boolean;
-  maxItems?: number;
-  maxPages?: number;
+  totalItems?: number;
+  itemsPerPage?: number;
   currentPage?: number;
 }
