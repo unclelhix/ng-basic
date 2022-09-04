@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./service-pipes.component.scss']
 })
 export class ServicePipesComponent implements OnInit {
+
   currentPage:number  = 1;
   totalItems:number = 0;
   itemsPerPage:number  = 10;
@@ -73,7 +74,6 @@ export class ServicePipesComponent implements OnInit {
 
     this.pagingConfig.itemsPerPage = event.target.value;
     this.pagingConfig.currentPage = 1;
-
     this.getCustomers();
   }
 }

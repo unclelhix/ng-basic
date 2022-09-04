@@ -8,7 +8,7 @@ import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { DataTypesComponent } from './data-types/data-types.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BuiltInDirectivesComponent } from './built-in-directives/built-in-directives.component';
 import { ServicePipesComponent } from './service-pipes/service-pipes.component';
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
@@ -20,9 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModelComponent } from './ng-model/ng-model.component';
 import { FormsValidationComponent } from './forms-validation/forms-validation.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
       NotFoundComponent,
       MainNavbarComponent,
@@ -35,13 +36,15 @@ import { FormsValidationComponent } from './forms-validation/forms-validation.co
       NgForComponent,
       NgIfComponent,
       NgModelComponent,
-      FormsValidationComponent
+      FormsValidationComponent,
+      ReactiveFormsComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, //Add this for ngModel etc
     CommonModule, //Add this for ngClass etc
+    ReactiveFormsModule, //reactive forms
     BrowserAnimationsModule,
     NgxPaginationModule,
     HttpClientModule

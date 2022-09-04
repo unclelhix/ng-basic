@@ -1,12 +1,11 @@
-// export interface Customer {
-//   id:number;
-//   firstName: string;
-//   lastName: string;
-//   birthday: Date;
-//   mobileNumber: string;
-//   email: string;
-//   createdOn : Date;
-// }
+export interface Customer {
+  id:number;
+  firstName: string;
+  lastName: string;
+  birthday: Date;
+  mobileNumber: string;
+  email: string;
+}
 
 export class Customer{
   public id:number;
@@ -16,6 +15,9 @@ export class Customer{
   public mobileNumber: string;
   public email: string;
   public createdOn : Date;
+  public createdBy: string;
+  public lastModified: Date;
+  public lastModifiedBy: string;
 
   public constructor(id:number,
     firstName:string,
@@ -23,7 +25,10 @@ export class Customer{
     birthday: Date,
     mobileNumber:string,
     email: string,
-    createdOn: Date ) {
+    createdOn: Date,
+    createdBy: string,
+    lastModified: Date,
+    lastModifiedBy: string) {
 
     this.id = id;
     this.firstName = firstName;
@@ -32,7 +37,9 @@ export class Customer{
     this.mobileNumber = mobileNumber;
     this.email = email;
     this.createdOn = createdOn;
-
+    this.createdBy = createdBy;
+    this.lastModified = lastModified;
+    this.lastModifiedBy = lastModifiedBy;
   }
 
 }

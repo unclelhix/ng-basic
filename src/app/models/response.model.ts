@@ -1,6 +1,6 @@
 export interface ResponseBody<T> {
   data: T;
-  errorMessage?: string;
+  errorMessages: string[];
   isSuccess: boolean;
   maxItems?: number;
   maxPages?: number;

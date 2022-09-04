@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Customer } from '../models/customer.model';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseBody } from '../models/response.model';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,9 @@ constructor(private httpClient: HttpClient) { }
       'maxItemsPerPage': maxItemsPerPage
     }
     return this.httpClient.get<ResponseBody<any>>(this.baseURL + 'Customers/GetCustomersPaging', {params: params});
+  }
+  addCustomer(customer: Customer): Observable<ResponseBody<any>>{
+    return this.httpClient.post<ResponseBody<Customer>>(`${this.baseURL}Customers/AddCustomer`, {'customerTransport': customer});
   }
 
 }

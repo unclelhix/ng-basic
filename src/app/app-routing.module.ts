@@ -7,6 +7,7 @@ import { FormsValidationComponent } from './forms-validation/forms-validation.co
 import { NgModelComponent } from './ng-model/ng-model.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { ServicePipesComponent } from './service-pipes/service-pipes.component';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'servicepipes', component:  ServicePipesComponent},
   { path: 'ngmodel', component:  NgModelComponent},
   { path: 'formsvalidation', component:  FormsValidationComponent},
+  { path: 'reactiveforms', component:  ReactiveFormsComponent},
   { path: 'notfound', component:  NotFoundComponent},
   {
     path: '**',
