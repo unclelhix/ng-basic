@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Customer } from '../models/customer.model';
 import { ErrorMessage } from '../models/error-message.model';
@@ -12,8 +13,9 @@ import { CustomerService } from '../services/customer.service';
   styleUrls: ['./reactive-forms.component.scss']
 })
 export class ReactiveFormsComponent implements OnInit {
+
   title: string = 'Raective Forms';
-  isAdded: boolean = false;
+  isSuccess: boolean = false;
 
   customerForm: FormGroup = {} as FormGroup;
 
@@ -22,34 +24,56 @@ export class ReactiveFormsComponent implements OnInit {
   errorMessage: string[] = [];
 
   constructor(
+    private route: ActivatedRoute,
     private fb: FormBuilder,
-    private customerService: CustomerService) { }
+    private customerService: CustomerService)
+    {
+      this.customer = this.route.snapshot.data.customer;
+    }
 
   ngOnInit() {
     this.initForm();
   }
 
   initForm() {
+
     this.customerForm = this.fb.group(
       {
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        birthday: [null],
-        email: ['', Validators.required],
-        mobileNumber: ['', Validators.required],
+        firstName: [this.customer ? this.customer.firstName : null, Validators.required],
+        lastName: [this.customer ? this.customer.lastName : null, Validators.required],
+        birthday: [this.customer ? this.customer.birthday : null],
+        email: [this.customer ? this.customer.email : null, Validators.required],
+        mobileNumber: [this.customer ? this.customer.mobileNumber : null, Validators.required],
       });
+
   }
 
   save() {
-    console.log(this.customerForm.value);
 
     if (this.customerForm.valid) {
-      this.customerService.addCustomer(this.customerForm.value).subscribe(res => {
-        this.isAdded = res.data
-        if (!res.data) {
-          this.errorMessage = res.errorMessages;
+
+      if (!this.customer) {
+        this.customerService.addCustomer(this.customerForm.value).subscribe(res => {
+          if (!res.data) this.errorMessage = res.errorMessages;
+          {
+            this.isSuccess = true ;
+            this.errorMessage = [];
+          }
+        });
+      } else {
+        const customer = {
+          id: this.customer.id,
+          ...this.customerForm.value
         }
-      });
+        this.customerService.updateCustomer(customer).subscribe(res => {
+          if (!res.data) this.errorMessage = res.errorMessages;
+          else {
+            this.isSuccess = true ;
+            this.errorMessage = [];
+          }
+
+        });
+      }
     }
   }
 }

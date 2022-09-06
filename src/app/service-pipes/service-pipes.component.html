@@ -28,6 +28,7 @@
           <th>Mobile Number</th>
           <th>Email</th>
           <th>Registration Date</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tr *ngFor="let customer of customers | paginate : pagingConfig; let i = index;">
@@ -40,6 +41,10 @@
         <td>{{ customer.mobileNumber }}</td>
         <td>{{ customer.email }}</td>
         <td>{{ customer.createdOn | date : 'MM/dd/yyyy' }}</td>
+        <td>
+          <a  [routerLink]="['/reactiveforms',customer.id,'edit']"  class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Edit</a>
+        </td>
+
       </tr>
 
     </table>

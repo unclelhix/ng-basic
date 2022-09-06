@@ -9,6 +9,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { ServicePipesComponent } from './service-pipes/service-pipes.component';
+import { CustomerResolver } from './services/customer.resolver';
 
 const routes: Routes = [
   { path: '', component: DataTypesComponent },
@@ -18,7 +19,14 @@ const routes: Routes = [
   { path: 'servicepipes', component:  ServicePipesComponent},
   { path: 'ngmodel', component:  NgModelComponent},
   { path: 'formsvalidation', component:  FormsValidationComponent},
-  { path: 'reactiveforms', component:  ReactiveFormsComponent},
+  { path: 'reactiveforms/add', component:  ReactiveFormsComponent},
+  {
+    path: 'reactiveforms/:id/edit',
+    component: ReactiveFormsComponent,
+    resolve: {
+      customer: CustomerResolver,
+    },
+  },
   { path: 'notfound', component:  NotFoundComponent},
   {
     path: '**',

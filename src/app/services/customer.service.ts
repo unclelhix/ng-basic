@@ -22,6 +22,10 @@ constructor(private httpClient: HttpClient) { }
     return this.httpClient.get<Customer[]>(this.baseURL + 'Customers/GetCustomers');
   }
 
+  getCustomerById(id: number):Observable<ResponseBody<any>>{
+    return this.httpClient.get<ResponseBody<any>>(`${this.baseURL}Customers/GetCustomerById?id=${id}`);
+  }
+
   getCustomersPaging(
     currentPage:number,
     maxItemsPerPage: number): Observable<ResponseBody<any>>{
@@ -36,6 +40,9 @@ constructor(private httpClient: HttpClient) { }
 
   addCustomer(customer: Customer): Observable<ResponseBody<any>>{
     return this.httpClient.post<ResponseBody<Customer>>(`${this.baseURL}Customers/AddCustomer`, {'customerTransport': customer});
+  }
+  updateCustomer(customer: Customer): Observable<ResponseBody<any>>{
+    return this.httpClient.patch<ResponseBody<Customer>>(`${this.baseURL}Customers/UpdateCustomerInfo`, {'customerTransport': customer});
   }
 
 }
