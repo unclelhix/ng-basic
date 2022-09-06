@@ -16,7 +16,7 @@ export class ReactiveFormsComponent implements OnInit {
 
   title: string = 'Raective Forms';
   isSuccess: boolean = false;
-
+  status: string = '';
   customerForm: FormGroup = {} as FormGroup;
 
   customer: Customer = {} as Customer;
@@ -29,6 +29,7 @@ export class ReactiveFormsComponent implements OnInit {
     private customerService: CustomerService)
     {
       this.customer = this.route.snapshot.data.customer;
+
     }
 
   ngOnInit() {
@@ -58,7 +59,9 @@ export class ReactiveFormsComponent implements OnInit {
       if (!this.customer) {
         this.customerService.addCustomer(this.customerForm.value).subscribe(res => {
           if (!res.data) this.errorMessage = res.errorMessages;
+          else
           {
+            this.status = 'Added'
             this.isSuccess = true ;
             this.errorMessage = [];
           }
@@ -72,6 +75,7 @@ export class ReactiveFormsComponent implements OnInit {
         this.customerService.updateCustomer(customer).subscribe(res => {
           if (!res.data) this.errorMessage = res.errorMessages;
           else {
+            this.status = 'Updated'
             this.isSuccess = true ;
             this.errorMessage = [];
           }
