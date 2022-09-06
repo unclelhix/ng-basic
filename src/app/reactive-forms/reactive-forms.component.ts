@@ -52,6 +52,9 @@ export class ReactiveFormsComponent implements OnInit {
 
     if (this.customerForm.valid) {
 
+      if(this.errorMessage.length > 0)
+      this.errorMessage = [];
+
       if (!this.customer) {
         this.customerService.addCustomer(this.customerForm.value).subscribe(res => {
           if (!res.data) this.errorMessage = res.errorMessages;
@@ -61,6 +64,7 @@ export class ReactiveFormsComponent implements OnInit {
           }
         });
       } else {
+
         const customer = {
           id: this.customer.id,
           ...this.customerForm.value
@@ -74,6 +78,8 @@ export class ReactiveFormsComponent implements OnInit {
 
         });
       }
+    }else{
+      this.errorMessage.push("Please the following fields.")
     }
   }
 }
