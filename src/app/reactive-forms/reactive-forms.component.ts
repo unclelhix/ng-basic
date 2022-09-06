@@ -16,32 +16,40 @@ export class ReactiveFormsComponent implements OnInit {
   isAdded: boolean = false;
 
   customerForm: FormGroup = {} as FormGroup;
-  customer: Customer= {} as Customer;
+
+  customer: Customer = {} as Customer;
+
   errorMessage: string[] = [];
-  constructor(private fb: FormBuilder,
-    private customerService: CustomerService) {}
+
+  constructor(
+    private fb: FormBuilder,
+    private customerService: CustomerService) { }
 
   ngOnInit() {
     this.initForm();
   }
 
-  initForm(){
-    this.customerForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      birthday: [null],
-      email: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
-    });
+  initForm() {
+    this.customerForm = this.fb.group(
+      {
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        birthday: [null],
+        email: ['', Validators.required],
+        mobileNumber: ['', Validators.required],
+      });
   }
 
   save() {
     console.log(this.customerForm.value);
-    this.customerService.addCustomer(this.customerForm.value).subscribe(res=>{
-      this.isAdded = res.data
-      if(!res.data){
-        this.errorMessage = res.errorMessages;
-      }
-    });
+
+    if (this.customerForm.valid) {
+      this.customerService.addCustomer(this.customerForm.value).subscribe(res => {
+        this.isAdded = res.data
+        if (!res.data) {
+          this.errorMessage = res.errorMessages;
+        }
+      });
+    }
   }
 }

@@ -24,15 +24,16 @@ constructor(private httpClient: HttpClient) { }
 
   getCustomersPaging(
     currentPage:number,
-    skipItems: number,
     maxItemsPerPage: number): Observable<ResponseBody<any>>{
 
     let params = {
       'currentPage': currentPage,
       'ItemsPerPage': maxItemsPerPage
     }
+
     return this.httpClient.get<ResponseBody<any>>(this.baseURL + 'Customers/GetCustomersPaging', {params: params});
   }
+
   addCustomer(customer: Customer): Observable<ResponseBody<any>>{
     return this.httpClient.post<ResponseBody<Customer>>(`${this.baseURL}Customers/AddCustomer`, {'customerTransport': customer});
   }

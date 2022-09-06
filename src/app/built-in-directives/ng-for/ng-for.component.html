@@ -4,12 +4,10 @@
     <div class="container">
 
         <div class="alert" *ngFor="let fruit of fruits"
-          [ngClass]="
-          {
+          [ngClass]="{
             'btn-danger': fruit === 'Apple',
             'btn-success': fruit === 'Banana',
-            'btn-warning': fruit === 'Orange'
-          }"
+            'btn-warning': fruit === 'Orange'}"
           role="alert">
 
           {{fruit}}

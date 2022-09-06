@@ -12,8 +12,9 @@ export class ServicePipesComponent implements OnInit {
   currentPage:number  = 1;
   totalItems:number = 0;
   itemsPerPage:number  = 10;
-  skipItems = 10;
+
   customers = new Array<Customer>();
+
   tableSize = [10, 20, 30, 50];
   pagingConfig: any;
 
@@ -54,7 +55,6 @@ export class ServicePipesComponent implements OnInit {
    getCustomers(){
     this.customerService.getCustomersPaging(
       this.pagingConfig.currentPage,
-      this.pagingConfig.skipItems,
       this.pagingConfig.itemsPerPage)
     .pipe(
       map(res => res) // or any other operator
