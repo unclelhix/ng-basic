@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
 import { Customer } from '../models/customer.model';
-import { ErrorMessage } from '../models/error-message.model';
-import { ResponseBody } from '../models/response.model';
 import { CustomerService } from '../services/customer.service';
 
 @Component({
@@ -18,24 +15,24 @@ export class ReactiveFormsComponent implements OnInit {
   isSuccess: boolean = false;
   status: string = '';
   customerForm: FormGroup = {} as FormGroup;
-
   customer: Customer = {} as Customer;
-
   errorMessage: string[] = [];
-
+  employeeStatusIdInputValue: number = 0;
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private customerService: CustomerService)
     {
       this.customer = this.route.snapshot.data.customer;
-
     }
 
   ngOnInit() {
     this.initForm();
   }
-
+  employeeStatusEventHanlder(value: any) {
+    this.employeeStatusIdInputValue = value;
+    console.log('Value: ', value)
+  }
   initForm() {
 
     this.customerForm = this.fb.group(
@@ -67,7 +64,6 @@ export class ReactiveFormsComponent implements OnInit {
           }
         });
       } else {
-
         const customer = {
           id: this.customer.id,
           ...this.customerForm.value
@@ -79,7 +75,6 @@ export class ReactiveFormsComponent implements OnInit {
             this.isSuccess = true ;
             this.errorMessage = [];
           }
-
         });
       }
     }else{

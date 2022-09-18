@@ -21,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModelComponent } from './ng-model/ng-model.component';
 import { FormsValidationComponent } from './forms-validation/forms-validation.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { EmployeeStatusComponent } from './shared/employee-status.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
       NgIfComponent,
       NgModelComponent,
       FormsValidationComponent,
-      ReactiveFormsComponent
+      ReactiveFormsComponent,
+      EmployeeStatusComponent
    ],
   imports: [
     BrowserModule,
