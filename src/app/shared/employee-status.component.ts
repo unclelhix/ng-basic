@@ -27,8 +27,8 @@ export enum EmployeeStatus {
 export class EmployeeStatusComponent implements OnInit {
   keys = Object.keys;
   employeeStatuses = EmployeeStatus;
-  enumKeys:any[] = [];
   employeeStatus:EmployeeStatus =  {} as EmployeeStatus;
+  enumKeys:any[] = [];
 
   @Output() employeeStatusValueChange = new EventEmitter<number>();
 

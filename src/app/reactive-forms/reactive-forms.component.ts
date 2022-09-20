@@ -43,7 +43,6 @@ export class ReactiveFormsComponent implements OnInit {
         email: [this.customer ? this.customer.email : null, Validators.required],
         mobileNumber: [this.customer ? this.customer.mobileNumber : null, Validators.required],
       });
-
   }
 
   save() {
